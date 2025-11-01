@@ -49,6 +49,18 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
+      const response = await fetch('https://functions.poehali.dev/8a1f3f51-415b-46e1-a257-6b9a1b6f84a6', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send');
+      }
+
       toast({
         title: "Заявка отправлена!",
         description: "Мы свяжемся с вами в ближайшее время.",
